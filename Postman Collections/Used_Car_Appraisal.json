@@ -85,18 +85,7 @@
                 ],
                 "body": {
                   "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "key": "name",
-                      "type": "text",
-                      "value": "Company C"
-                    },
-                    {
-                      "key": "database",
-                      "type": "text",
-                      "value": "companyc"
-                    }
-                  ],
+                  "urlencoded": [],
                   "options": {
                     "urlencoded": {}
                   }
@@ -4058,6 +4047,11 @@
         }
       ],
       "_postman_id": "11a7b174-a7c2-49d0-9ecd-92b34acc9ed5"
+    },
+    {
+      "name": "Angga Test",
+      "item": [],
+      "_postman_id": "3122560f-584c-497c-83c0-3c76ed7ffea4"
     }
   ]
 }
