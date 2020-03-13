@@ -106,7 +106,7 @@
               "response": []
             },
             {
-              "name": "user Copy",
+              "name": "update",
               "_postman_id": "f9a3365e-6078-482a-a8a0-217f6945e272",
               "protocolProfileBehavior": {
                 "disableBodyPruning": true
