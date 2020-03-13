@@ -58,7 +58,7 @@
               "response": []
             },
             {
-              "name": "create company Copy",
+              "name": "user",
               "_postman_id": "e0b52c40-7202-439c-8d0e-f41ae1928a87",
               "protocolProfileBehavior": {
                 "disableBodyPruning": true
@@ -2640,7 +2640,7 @@
                           "type": "text"
                         },
                         {
-                          "key": "accident",
+                          "key": "accidents",
                           "value": "0",
                           "description": "1. true, 0. false",
                           "type": "text"
