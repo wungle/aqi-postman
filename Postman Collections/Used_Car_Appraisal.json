@@ -1,0 +1,4015 @@
+{
+  "info": {
+    "_postman_id": "09910ce7-b9cf-4482-ae2f-9a8a51789575",
+    "name": "Used Car Appraisal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "superadmin",
+      "item": [
+        {
+          "name": "auth admin",
+          "item": [
+            {
+              "name": "login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1ca66992-8da1-4ad5-a685-8453781a8151",
+                    "exec": [
+                      "var jsonData = pm.response.json();\r",
+                      "if(!jsonData.error) {\r",
+                      "    pm.environment.set(\"admin-token\", jsonData.data.access.token);\r",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "405321ff-e4ca-4d86-a607-2252cb0e7e3c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "email",
+                      "value": "admin@aqi.co.id",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "admin",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "formdata": {}
+                  }
+                },
+                "url": "{{be-host}}/auth-admin/login"
+              },
+              "response": []
+            },
+            {
+              "name": "create company Copy",
+              "_postman_id": "e0b52c40-7202-439c-8d0e-f41ae1928a87",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "Company C",
+                      "type": "text"
+                    },
+                    {
+                      "key": "database",
+                      "value": "companyc",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/companies"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "30532dba-b2d3-47eb-9a6e-910490562436",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "company",
+          "item": [
+            {
+              "name": "create company",
+              "_postman_id": "cd011f3b-bd44-4465-bf6d-62bf2ec47d1c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "Company C",
+                      "type": "text"
+                    },
+                    {
+                      "key": "database",
+                      "value": "companyc",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/companies"
+              },
+              "response": []
+            },
+            {
+              "name": "edit company",
+              "_postman_id": "19b51bb5-2ec9-4ceb-860e-8cb40b8cb103",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "type": "text",
+                      "value": "Company Chopin"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/companies/{{company-uuid}}"
+              },
+              "response": []
+            },
+            {
+              "name": "delete company",
+              "_postman_id": "c1f7db23-b9ae-4214-aab0-5d19ab43c94c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/companies/{{company-uuid}}"
+              },
+              "response": []
+            },
+            {
+              "name": "show company",
+              "_postman_id": "bba5d5f8-1513-48d7-831e-6924f996aea4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "type": "text",
+                      "value": "Company Chopin"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/companies/{{company-uuid}}"
+              },
+              "response": []
+            },
+            {
+              "name": "list company",
+              "_postman_id": "d9deec6f-e328-4539-8a17-191bec0310b5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{be-host}}/companies"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "b01fb55b-7fb2-44e5-b62f-ce832ca9b2dd",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "superadmin management",
+          "item": [
+            {
+              "name": "create superadmin",
+              "_postman_id": "9328a94a-2a0d-4b96-adc9-41d5a583469f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "type": "text",
+                      "value": "argus"
+                    },
+                    {
+                      "key": "email",
+                      "type": "text",
+                      "value": "argus.gyver2@aqi.co.id"
+                    },
+                    {
+                      "key": "password",
+                      "value": "argus123",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password_confirmation",
+                      "value": "argus123",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/administrators"
+              },
+              "response": []
+            },
+            {
+              "name": "show superadmin",
+              "_postman_id": "b2b43c60-842a-4e15-98ef-c1a8cf56bdc2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/administrators/{{admin-uuid}}"
+              },
+              "response": []
+            },
+            {
+              "name": "list superadmin",
+              "_postman_id": "d1d55545-1aa1-497e-8bed-e3923cf72ad7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/administrators"
+              },
+              "response": []
+            },
+            {
+              "name": "update superadmin",
+              "_postman_id": "d2e93309-86f9-4dc0-a1e3-cd0abd3eb551",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "type": "text",
+                      "value": "argus"
+                    },
+                    {
+                      "key": "email",
+                      "type": "text",
+                      "value": "argus.gyver@aqi.co.id"
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "argus1234"
+                    },
+                    {
+                      "key": "password_confirmation",
+                      "type": "text",
+                      "value": "argus1234"
+                    },
+                    {
+                      "key": "old_password",
+                      "value": "argus123",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/administrators/{{admin-uuid}}"
+              },
+              "response": []
+            },
+            {
+              "name": "delete superadmin",
+              "_postman_id": "f22fff0b-2239-4e85-97af-e41d965d3489",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/administrators/{{admin-uuid}}"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "898ed124-e268-4d10-8280-5d20e0085bcb",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "admin company management",
+          "item": [
+            {
+              "name": "create admin company",
+              "_postman_id": "4b9f0c90-6b39-43bf-aeaa-7f5eed96c373",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "sidiq",
+                      "type": "text"
+                    },
+                    {
+                      "key": "email",
+                      "value": "sidiq@aqi.co.id",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "asdasdasd",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password_confirmation",
+                      "value": "asdasdasd",
+                      "type": "text"
+                    },
+                    {
+                      "key": "company_code",
+                      "value": "30433",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "formdata": {}
+                  }
+                },
+                "url": "{{be-host}}/company-management/create-admin"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "9d38a251-d8d8-4591-8451-778485c8de4d",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Vehicle Management",
+          "item": [
+            {
+              "name": "list brand",
+              "_postman_id": "e9542bd9-e6d3-4a3e-8302-4933f0f3ee63",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/brands"
+              },
+              "response": []
+            },
+            {
+              "name": "show brand",
+              "_postman_id": "f4076dbd-a904-4c20-9a0e-574c5956bc46",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/brands/{{brand-id}}"
+              },
+              "response": []
+            },
+            {
+              "name": "list model",
+              "_postman_id": "fbf4fd38-0cad-4340-abda-a816ab098dfe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/models"
+              },
+              "response": []
+            },
+            {
+              "name": "show model",
+              "_postman_id": "917ec793-c151-4f00-9b68-4b0cfeb8045a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/models/{{model-id}}"
+              },
+              "response": []
+            },
+            {
+              "name": "list variant",
+              "_postman_id": "e1b33eb9-2d95-4ee2-890f-589c348cbd06",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/variants"
+              },
+              "response": []
+            },
+            {
+              "name": "show variant",
+              "_postman_id": "d5794f11-4ce4-424c-b0da-8f4ba3ef057b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/variants/1"
+              },
+              "response": []
+            },
+            {
+              "name": "list unit type",
+              "_postman_id": "33160ff4-bcef-445a-95c8-50b301cf7b48",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/unit-types"
+              },
+              "response": []
+            },
+            {
+              "name": "show unit type",
+              "_postman_id": "017cb805-1b8a-4d83-8337-8e167667f1b3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/unit-types/{{unit_type-id}}"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "28802d16-8bf6-4eb5-b32a-6ee68ce45f1a",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Region Management",
+          "item": [
+            {
+              "name": "list province",
+              "_postman_id": "18e944a3-3b48-442b-8d5f-89e1d5a85c0b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/provinces"
+              },
+              "response": []
+            },
+            {
+              "name": "show province",
+              "_postman_id": "91d5daeb-2135-4fcd-9aee-b92753d8f77c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/provinces/{{province-id}}"
+              },
+              "response": []
+            },
+            {
+              "name": "list region",
+              "_postman_id": "759ffd64-a17b-43ea-903a-0498b292d168",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/regions"
+              },
+              "response": []
+            },
+            {
+              "name": "show region",
+              "_postman_id": "c2caa126-7ab4-47a4-bf4d-234e1a3ef4db",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/regions/{{region-id}}"
+              },
+              "response": []
+            },
+            {
+              "name": "list city",
+              "_postman_id": "1c509685-9f8e-471d-82fe-729529a31d59",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "url": "{{be-host}}/cities"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "710f4cb4-e3ce-473a-a4b8-0c0083c56408",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "19529edb-ff25-45ab-b9c5-8de62437193c"
+    },
+    {
+      "name": "auth user (auth company user)",
+      "item": [
+        {
+          "name": "login",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aca85168-63fa-4bc1-92cd-2832e049e4ad",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "164dde2e-aa0b-48e4-95b9-dcf915ffd332",
+                "exec": [
+                  "var jsonData = pm.response.json();\r",
+                  "if(!jsonData.error) {\r",
+                  "    pm.environment.set(\"access-token\", jsonData.data.access.token);\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "66cb14a6-24a0-4e35-a46b-dab5be14f85e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "company_code",
+                  "value": "30433",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "inspector@aqi.co.id",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "asdasdasd",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{be-host}}/auth/login"
+          },
+          "response": []
+        },
+        {
+          "name": "user",
+          "_postman_id": "c8114673-b486-4973-ae3a-22239367dc2d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access-token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "company_code",
+                  "value": "30611",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{be-host}}/auth/user"
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "_postman_id": "4c78a647-2fd7-4059-a34e-66ce3653829d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access-token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "company_code",
+                  "value": "30611",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": " Sidiq Aldi Ginanjar",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": " sidiq@aqi.co.id",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "password",
+                  "value": "qweqweqwe",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "qweqweqwe",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "old_password",
+                  "value": "asdasdasd",
+                  "type": "text",
+                  "disabled": true
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{be-host}}/auth/update"
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "_postman_id": "e0ac064e-d5f7-4840-bfb6-bfe1f4126fcb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access-token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "company_code",
+                  "value": "30611",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{be-host}}/auth/logout"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "fcc0b90d-128f-4bcc-ada2-7f170dbff012"
+    },
+    {
+      "name": "company admin",
+      "item": [
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "list user",
+              "_postman_id": "4636170e-7d96-47b4-8a48-c97902e3eca0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/users?company_code=30611",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30611"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "create user",
+              "_postman_id": "3fd42cde-460c-4da2-a4f2-b180ad4fe17e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "inspector",
+                      "type": "text"
+                    },
+                    {
+                      "key": "email",
+                      "value": "inspector@aqi.co.id",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "asdasdasd",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password_confirmation",
+                      "value": "asdasdasd",
+                      "type": "text"
+                    },
+                    {
+                      "key": "company_code",
+                      "value": "30393",
+                      "type": "text"
+                    },
+                    {
+                      "key": "role_id",
+                      "value": "2",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/users"
+              },
+              "response": []
+            },
+            {
+              "name": "get user details",
+              "_postman_id": "983d4c95-91a1-48d5-b9e6-9b7ff38f9506",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/users/58c52de2-48d3-49da-8eb1-268ddcc58375?company_code=30611",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "users",
+                    "58c52de2-48d3-49da-8eb1-268ddcc58375"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30611"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete user",
+              "_postman_id": "f72494b3-3ffb-45fa-b1cf-b53eb7fed0fc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "company_code",
+                      "value": "30611",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/users/58c52de2-48d3-49da-8eb1-268ddcc58375"
+              },
+              "response": []
+            },
+            {
+              "name": "update user",
+              "_postman_id": "1467422c-0da2-43dc-ba6c-2a475d2e1e39",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "company_code",
+                      "value": "30611",
+                      "type": "text"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Sidiq Aldi Ginanjar",
+                      "type": "text"
+                    },
+                    {
+                      "key": "email",
+                      "value": "sidiq@aqi.co.id",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "qweqweqwe",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "password_confirmation",
+                      "value": "qweqweqwe",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "old_password",
+                      "value": "asdasdasd",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "role_id",
+                      "value": "1",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/users/5acbbf31-1aea-45d4-ad4f-d38e2e171a8d"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "2b218a43-7d49-416c-a54d-bd5590f38b23",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "roles",
+          "item": [
+            {
+              "name": "get roles",
+              "_postman_id": "2208aec4-0cef-4dc8-a622-34ca8a72a857",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/roles?company_code=30611",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30611"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show role",
+              "_postman_id": "e57e94df-f452-4d5c-a22b-4456a491d280",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/roles/96b5abc3-0ffd-447a-b0f3-c8f7a4dc34e6?company_code=30611",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "roles",
+                    "96b5abc3-0ffd-447a-b0f3-c8f7a4dc34e6"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30611"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update role",
+              "_postman_id": "283f63bf-107c-439d-b82f-f28c4bdca954",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "permission_id[]",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "permission_id[]",
+                      "value": "2",
+                      "type": "text"
+                    },
+                    {
+                      "key": "permission_id[]",
+                      "value": "3",
+                      "type": "text"
+                    },
+                    {
+                      "key": "permission_id[]",
+                      "value": "4",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{be-host}}/roles/96b5abc3-0ffd-447a-b0f3-c8f7a4dc34e6?company_code=30611",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "roles",
+                    "96b5abc3-0ffd-447a-b0f3-c8f7a4dc34e6"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30611"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "7444d4e7-04ab-4ac3-894e-c2aa77930a70",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "permission",
+          "item": [
+            {
+              "name": "list permission",
+              "_postman_id": "49a609de-9b41-42b2-a016-33edb250b45b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/permissions?company_code=30611",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "permissions"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30611"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "232f2207-3107-46a9-8416-e734ca2aa717",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "formula parameter",
+          "item": [
+            {
+              "name": "list parameter",
+              "_postman_id": "86ee6558-522f-40c0-b799-5f44bf5d4c0e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/formula-parameters?company_code=30433",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "formula-parameters"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show parameter",
+              "_postman_id": "43e7017a-a2f4-403d-a999-8096288f17e1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/formula-parameters/3da76f6d-f559-4cfb-bc44-9a26356cde80?company_code=30433",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "formula-parameters",
+                    "3da76f6d-f559-4cfb-bc44-9a26356cde80"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "create parameter",
+              "_postman_id": "86ef1978-c721-4f78-87c4-c6fc224ecd1c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "company_code",
+                      "value": "30433",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type_id",
+                      "value": "2",
+                      "description": "1=nominal ; 2=percent",
+                      "type": "text"
+                    },
+                    {
+                      "key": "name",
+                      "value": "discount percent",
+                      "type": "text"
+                    },
+                    {
+                      "key": "value",
+                      "value": "100",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "formdata": {}
+                  }
+                },
+                "url": "{{be-host}}/formula-parameters"
+              },
+              "response": []
+            },
+            {
+              "name": "update parameter",
+              "_postman_id": "38f15dc3-b52d-41ca-8cb1-284e38c11bea",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "company_code",
+                      "value": "30433",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type_id",
+                      "value": "2",
+                      "type": "text",
+                      "description": "1=nominal ; 2=percent"
+                    },
+                    {
+                      "key": "name",
+                      "value": "discount percent",
+                      "type": "text"
+                    },
+                    {
+                      "key": "value",
+                      "value": "5",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/formula-parameters/fd31f922-5736-48e6-9d11-fbbd9f86e70b"
+              },
+              "response": []
+            },
+            {
+              "name": "delete parameter",
+              "_postman_id": "7a98836d-513c-4f1e-9a95-678722fc5c64",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/formula-parameters/a7e7b9df-511f-4054-b314-86b91f560456?company_code=30433",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "formula-parameters",
+                    "a7e7b9df-511f-4054-b314-86b91f560456"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "de05da04-2521-4f48-9faf-bd770a86179d",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "formula operator",
+          "item": [
+            {
+              "name": "list operator",
+              "_postman_id": "21e96039-6075-4347-b829-9cedcd87834a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/formula-operators?company_code=30433",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "formula-operators"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show operator",
+              "_postman_id": "1ef66c04-cc4a-48a2-8699-b6ceeee45e58",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/formula-operators/1?company_code=30433",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "formula-operators",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "51de826e-12ef-4d14-8932-1da8b100f092",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "formula",
+          "item": [
+            {
+              "name": "get formula",
+              "_postman_id": "2f21aa55-53e0-470b-a2c5-ba2984947913",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/purchasing-formula?company_code=30433",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "purchasing-formula"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update formula",
+              "_postman_id": "4ddcee9b-84b9-4e35-806b-43b941e3baa0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "formula[0][order]",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[0][type_id]",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[0][id]",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[1][order]",
+                      "value": "2",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[1][type_id]",
+                      "value": "2",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[1][id]",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[2][order]",
+                      "value": "3",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[2][type_id]",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "formula[2][id]",
+                      "value": "3",
+                      "type": "text"
+                    },
+                    {
+                      "key": "company_code",
+                      "value": "30433",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/purchasing-formula"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "c3a7da7b-8325-45a6-b99e-a575dbdde975",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "purchasing calculation",
+          "item": [
+            {
+              "name": "calculate",
+              "_postman_id": "ff88f37d-2de0-457c-9f7e-c91f8347772a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "company_code",
+                      "value": "30433",
+                      "type": "text"
+                    },
+                    {
+                      "key": "basic_price",
+                      "value": "5000000",
+                      "type": "text"
+                    },
+                    {
+                      "key": "recondition_cost",
+                      "value": "1000000",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/purchasing-calculation"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "63e7fc17-6ef2-4581-b422-40707df6837d",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "1ecfa1c7-ebe6-4ce9-9298-b1338641057c"
+    },
+    {
+      "name": "Inspector",
+      "item": [
+        {
+          "name": "task",
+          "item": [
+            {
+              "name": "transactions",
+              "item": [
+                {
+                  "name": "Get Transactions",
+                  "_postman_id": "e1a8f8fa-998e-4b76-8fd6-8d2e095fe0a6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access-token}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/transactions?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "transactions"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get List Status",
+                  "_postman_id": "02bcb751-caa2-4bda-8db6-e2fa7e06f530",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/transactions/status?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        "status"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create Transaction",
+                  "_postman_id": "1dc1e883-6a2e-4992-8568-1a460007f8b1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "company_code",
+                          "type": "text",
+                          "value": "30393"
+                        },
+                        {
+                          "key": "seller_offering_price",
+                          "value": "5000000",
+                          "type": "text"
+                        },
+                        {
+                          "key": "status",
+                          "value": "1",
+                          "description": "1. On Inspection, 2. On Approval, 3. Approved, 4. Rejected, 5. Discontinued, 6. On Purchasing Process, 7. Succeed, 8. Declined",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "start_date",
+                          "value": "2020-03-10",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "finish_date",
+                          "value": "2020-03-20",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ],
+                      "options": {
+                        "formdata": {}
+                      }
+                    },
+                    "url": "{{be-host}}/transactions"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "c5b42fbe-6f73-43b3-b3c7-517f8980a0fe",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "owners",
+              "item": [
+                {
+                  "name": "Get Transactions Owner",
+                  "_postman_id": "76e0b53d-3c39-46a5-bb91-435d027f3fa7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/transactions/owners?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        "owners"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create Task Owner",
+                  "_postman_id": "21a82389-5f43-4d47-a181-3d463b6e5278",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "required",
+                          "key": "company_code",
+                          "type": "text",
+                          "value": "30393"
+                        },
+                        {
+                          "key": "transaction_id",
+                          "value": "1",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "type",
+                          "value": "1",
+                          "description": "1. Company, 2. Personal",
+                          "type": "text"
+                        },
+                        {
+                          "key": "name",
+                          "value": "haikal",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "id_number",
+                          "value": "123123123",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "id_photo",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "npwp_number",
+                          "value": "123123123",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "npwp_photo",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "tdp_number",
+                          "value": "123123123",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "tdp_photo",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "siup_number",
+                          "value": "123",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "siup_photo",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "address",
+                          "value": "Yogyakarta",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "phone",
+                          "value": "085647412888",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "seller_name",
+                          "value": "joko",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "seller_id_number",
+                          "value": "1231223123",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "seller_id_photo",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "seller_phone",
+                          "value": "085648488239",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "seller_address",
+                          "value": "Klaten",
+                          "description": "optional",
+                          "type": "text"
+                        }
+                      ],
+                      "options": {
+                        "formdata": {}
+                      }
+                    },
+                    "url": "{{be-host}}/transactions/owners"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "af32d61a-013e-4396-9a84-9bbf76fa5a9a",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "vehicle / documents",
+              "item": [
+                {
+                  "name": "Get Transactions Vehicle",
+                  "_postman_id": "81f5a620-d3e5-41b8-a382-d1af1b673c0e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/transactions/vehicles?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        "vehicles"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create Task Vehicle",
+                  "_postman_id": "a6a014eb-29f6-4956-bf04-2a7ff5d2e2f7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "required",
+                          "key": "company_code",
+                          "type": "text",
+                          "value": "30393"
+                        },
+                        {
+                          "description": "required",
+                          "key": "transaction_id",
+                          "type": "text",
+                          "value": "1"
+                        },
+                        {
+                          "key": "type",
+                          "value": "1",
+                          "description": "1. Company, 2. Personal",
+                          "type": "text"
+                        },
+                        {
+                          "key": "vehicle_brand_id",
+                          "value": "1",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "vehicle_model_id",
+                          "value": "1",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "vehicle_variant_id",
+                          "value": "52",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "vehicle_unit_type_id",
+                          "value": "3971",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "body_type_id",
+                          "value": "1",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "flood_mark",
+                          "value": "1",
+                          "description": "1. true, 0. false",
+                          "type": "text"
+                        },
+                        {
+                          "key": "accident",
+                          "value": "0",
+                          "description": "1. true, 0. false",
+                          "type": "text"
+                        },
+                        {
+                          "key": "mileage",
+                          "value": "999",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "car_color",
+                          "value": "blue",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "stnk",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "vehicle_registration_number",
+                          "value": "123123",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "stnk_name",
+                          "value": "joko",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "stnk_address",
+                          "value": "Yogykarta",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "car_frame_number",
+                          "value": "B34fd9fds",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "mechine_number",
+                          "value": "fdfdsafds",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "stnk_expiry_date",
+                          "value": "2021-02-13",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "manufacture_year",
+                          "value": "2015-02-13",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "fuel",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "key": "bpkb",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "bpkb_number",
+                          "value": "123123123123",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "ownership_transfer_count",
+                          "value": "1",
+                          "description": "1,2,3",
+                          "type": "text"
+                        },
+                        {
+                          "key": "form_a",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "purchase_form",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "invoice",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "letter_of_release",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "kir",
+                          "value": "1",
+                          "description": "1. true, 0. false",
+                          "type": "text"
+                        },
+                        {
+                          "key": "kir_expiry_date",
+                          "value": "2021-02-13",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "manual_book",
+                          "value": "1",
+                          "description": "1. true, 0. false",
+                          "type": "text"
+                        },
+                        {
+                          "key": "spare_key",
+                          "value": "0",
+                          "description": "1. true, 0. false",
+                          "type": "text"
+                        }
+                      ],
+                      "options": {
+                        "formdata": {}
+                      }
+                    },
+                    "url": "{{be-host}}/transactions/vehicles"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "5ba190e9-0f92-4575-8336-8fcbd74a0c30",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "inspections",
+              "item": [
+                {
+                  "name": "Get Inspection Items",
+                  "_postman_id": "1d9deeb5-77eb-4681-81f6-431c5895788f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/transactions/inspections?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        "inspections"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        },
+                        {
+                          "key": "id",
+                          "value": "7",
+                          "description": "optinal",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "transaction_id",
+                          "value": "1",
+                          "description": "optional",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create Inspection Items",
+                  "_postman_id": "3fe14970-3c79-46e8-80ab-cfbf1f91cc17",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "required",
+                          "key": "company_code",
+                          "type": "text",
+                          "value": "30393"
+                        },
+                        {
+                          "description": "required",
+                          "key": "transaction_id",
+                          "type": "text",
+                          "value": "2"
+                        },
+                        {
+                          "key": "inspections[0][item_id]",
+                          "value": "210",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[0][condition]",
+                          "value": "G",
+                          "description": "G. GOOD, C. CHANGE, R. REPAIR",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[0][photo]",
+                          "value": "",
+                          "description": "optioanal",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[0][comment]",
+                          "value": "jos",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[0][recondition_cost_inspector]",
+                          "value": "100000",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[1][item_id]",
+                          "value": "209",
+                          "description": "required",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[1][condition]",
+                          "value": "C",
+                          "description": "G. GOOD, C. CHANGE, R. REPAIR",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[1][photo]",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[1][comment]",
+                          "value": "ok",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[1][recondition_cost_inspector]",
+                          "value": "0",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[2][item_id]",
+                          "value": "208",
+                          "description": "requiredins",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[2][condition]",
+                          "value": "R",
+                          "description": "G. GOOD, C. CHANGE, R. REPAIR",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[2][photo]",
+                          "value": "https://picsum.photos/200",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[2][comment]",
+                          "value": "masuk",
+                          "description": "optional",
+                          "type": "text"
+                        },
+                        {
+                          "key": "inspections[2][recondition_cost_inspector]",
+                          "value": "300000",
+                          "description": "optional",
+                          "type": "text"
+                        }
+                      ],
+                      "options": {
+                        "formdata": {}
+                      }
+                    },
+                    "url": "{{be-host}}/transactions/inspections"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "2ffbebad-1be1-4cd6-99a1-910288e842ac",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Get Task",
+              "_postman_id": "2225d16b-1443-4101-a0e1-61f0298078f8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [],
+                  "options": {
+                    "formdata": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{be-host}}/transactions/tasks?company_code=30393",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Task By Id",
+              "_postman_id": "5bc02612-6e0e-46dc-8c63-97a8163dcd97",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/transactions/tasks/1?company_code=30393",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "tasks",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "885c5888-2715-4c6f-8eb7-8ca483fb80eb",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "inspection",
+          "item": [
+            {
+              "name": "Get Inspection Sub Category",
+              "_postman_id": "28c55aa7-c21b-473e-8311-31d970ca7c38",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/inspections/subcategories?company_code=30393&category_id=3",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "inspections",
+                    "subcategories"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393",
+                      "description": "required"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "3",
+                      "description": "3. Vehicle Detail"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Inspection Items",
+              "_postman_id": "9fc7dab4-293c-4eb1-bc95-e6a72a0e20d0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/inspections/items?company_code=30393&sub_category_id=1",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "inspections",
+                    "items"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393",
+                      "description": "required"
+                    },
+                    {
+                      "key": "id",
+                      "value": "128",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "sub_category_id",
+                      "value": "1",
+                      "description": "1. BODY COMPONENT, 2. INTERIOR, 3. ENGINE COMPONENT, 4. UNDER BODY COMPONENT"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Inspection cost",
+              "_postman_id": "119537fe-435f-4b85-bb76-45b91c01f835",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/inspections/cost?company_code=30433&inspection_item=128&repair_change=R&variant_id=278&manufacture_date=20-10-2010",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "inspections",
+                    "cost"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433",
+                      "description": "required"
+                    },
+                    {
+                      "key": "inspection_item",
+                      "value": "128",
+                      "description": "required get from API"
+                    },
+                    {
+                      "key": "repair_change",
+                      "value": "R",
+                      "description": "R: repair C: Change"
+                    },
+                    {
+                      "key": "variant_id",
+                      "value": "278",
+                      "description": "get from vehicle variant"
+                    },
+                    {
+                      "key": "manufacture_date",
+                      "value": "20-10-2010",
+                      "description": "d-m-Y",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "4b31825c-09d6-4c8c-86b2-b401884133bf",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "uploader",
+          "item": [
+            {
+              "name": "Store",
+              "_postman_id": "0e441800-077a-4053-97a7-32fbc74c00b9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "files[]",
+                      "type": "file",
+                      "description": "- Required : Yes\n- Must array : Yes",
+                      "src": "/C:/Users/sidiq/Pictures/a.jpeg"
+                    },
+                    {
+                      "key": "files[]",
+                      "type": "file",
+                      "src": "/C:/Users/sidiq/Pictures/a.jpeg"
+                    },
+                    {
+                      "key": "company_code",
+                      "value": "30611",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {}
+                },
+                "url": "{{be-host}}/file/store"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "f40cd70e-558f-4067-8ca2-63f36a2ed5ca",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "5c191124-9855-4bc0-90fb-569360c3534e"
+    },
+    {
+      "name": "Approver",
+      "item": [
+        {
+          "name": "task",
+          "item": [
+            {
+              "name": "transactions",
+              "item": [
+                {
+                  "name": "Get Transactions",
+                  "_postman_id": "60780089-2c2d-4d6e-9ab8-cfd1132d6144",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access-token}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/approver/transactions?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "approver",
+                        "transactions"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get List Status",
+                  "_postman_id": "32333275-9881-4bfa-8942-4fda32b483d6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/approver/transactions/status?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "approver",
+                        "transactions",
+                        "status"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Transaction",
+                  "_postman_id": "8a2a9959-9b6a-4354-8349-c49ee6ed6746",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "company_code",
+                          "value": "30393",
+                          "type": "text"
+                        }
+                      ],
+                      "options": {
+                        "urlencoded": {}
+                      }
+                    },
+                    "url": "{{be-host}}/approver/transactions/1"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "8f840346-ef95-4048-9f62-ca70f204d9ef",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "owners",
+              "item": [
+                {
+                  "name": "Get Transactions Owner",
+                  "_postman_id": "eec1324e-8c91-422c-929b-68ba82a2cfdd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/approver/transactions/owners?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "approver",
+                        "transactions",
+                        "owners"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "49a30273-1d4f-4d2d-894a-a2b2ef2e81fa",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "vehicle / documents",
+              "item": [
+                {
+                  "name": "Get Transactions Vehicle",
+                  "_postman_id": "6e112793-21ef-4f32-85f5-e4371817de1a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/approver/transactions/vehicles?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "approver",
+                        "transactions",
+                        "vehicles"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "0e45df73-90ef-4e49-a6d7-b4d7d6fa2975",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "inspections",
+              "item": [
+                {
+                  "name": "Get Inspection Items",
+                  "_postman_id": "15421de1-97ed-4a54-a612-a56747bcb4f6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{be-host}}/approver/transactions/inspections?company_code=30393",
+                      "host": [
+                        "{{be-host}}"
+                      ],
+                      "path": [
+                        "approver",
+                        "transactions",
+                        "inspections"
+                      ],
+                      "query": [
+                        {
+                          "key": "company_code",
+                          "value": "30393"
+                        },
+                        {
+                          "key": "id",
+                          "value": "7",
+                          "description": "optinal",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "transaction_id",
+                          "value": "1",
+                          "description": "optional",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Inspection Items",
+                  "_postman_id": "282b5ea3-00ac-4119-8629-35c89fbc8037",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "type": "text",
+                        "value": "Bearer {{access-token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "required",
+                          "key": "company_code",
+                          "type": "text",
+                          "value": "30393"
+                        },
+                        {
+                          "description": "required",
+                          "key": "transaction_id",
+                          "type": "text",
+                          "value": "2"
+                        },
+                        {
+                          "description": "required",
+                          "key": "inspections[0][item_id]",
+                          "type": "text",
+                          "value": "210"
+                        },
+                        {
+                          "description": "G. GOOD, C. CHANGE, R. REPAIR",
+                          "key": "inspections[0][condition]",
+                          "type": "text",
+                          "value": "G"
+                        },
+                        {
+                          "description": "optioanal",
+                          "key": "inspections[0][photo]",
+                          "type": "text",
+                          "value": ""
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[0][comment]",
+                          "type": "text",
+                          "value": "jos"
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[0][recondition_cost_inspector]",
+                          "type": "text",
+                          "value": "100000"
+                        },
+                        {
+                          "description": "required",
+                          "key": "inspections[1][item_id]",
+                          "type": "text",
+                          "value": "209"
+                        },
+                        {
+                          "description": "G. GOOD, C. CHANGE, R. REPAIR",
+                          "key": "inspections[1][condition]",
+                          "type": "text",
+                          "value": "C"
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[1][photo]",
+                          "type": "text",
+                          "value": "https://picsum.photos/200"
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[1][comment]",
+                          "type": "text",
+                          "value": "ok"
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[1][recondition_cost_inspector]",
+                          "type": "text",
+                          "value": "0"
+                        },
+                        {
+                          "description": "requiredins",
+                          "key": "inspections[2][item_id]",
+                          "type": "text",
+                          "value": "208"
+                        },
+                        {
+                          "description": "G. GOOD, C. CHANGE, R. REPAIR",
+                          "key": "inspections[2][condition]",
+                          "type": "text",
+                          "value": "R"
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[2][photo]",
+                          "type": "text",
+                          "value": "https://picsum.photos/200"
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[2][comment]",
+                          "type": "text",
+                          "value": "masuk"
+                        },
+                        {
+                          "description": "optional",
+                          "key": "inspections[2][recondition_cost_inspector]",
+                          "type": "text",
+                          "value": "300000"
+                        }
+                      ],
+                      "options": {
+                        "formdata": {}
+                      }
+                    },
+                    "url": "{{be-host}}/approver/transactions/inspections"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "d2908c6a-1ee3-4d7d-86ad-5ec43a77a006",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Get Task",
+              "_postman_id": "850feacf-12be-4f0f-a635-324e2f82d1fb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [],
+                  "options": {
+                    "formdata": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{be-host}}/transactions/tasks?company_code=30393",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Task By Id",
+              "_postman_id": "466a9f52-e455-4673-93ce-1987ad36e667",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/transactions/tasks/1?company_code=30393",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "tasks",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "81271a95-1505-4540-a7cd-fe45707ee6ed",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "inspection",
+          "item": [
+            {
+              "name": "Get Inspection Sub Category",
+              "_postman_id": "b99627f2-7017-4210-b575-47c578475388",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/inspections/subcategories?company_code=30393&category_id=3",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "inspections",
+                    "subcategories"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393",
+                      "description": "required"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "3",
+                      "description": "3. Vehicle Detail"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Inspection Items",
+              "_postman_id": "d4bb5ff7-00de-4c2a-87b0-a8ae86a23ea5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/inspections/items?company_code=30393&sub_category_id=1",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "inspections",
+                    "items"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30393",
+                      "description": "required"
+                    },
+                    {
+                      "key": "id",
+                      "value": "128",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "sub_category_id",
+                      "value": "1",
+                      "description": "1. BODY COMPONENT, 2. INTERIOR, 3. ENGINE COMPONENT, 4. UNDER BODY COMPONENT"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Inspection cost",
+              "_postman_id": "e6c56776-05e8-4280-9d54-1fbd5292a3dd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{access-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{be-host}}/inspections/cost?company_code=30433&inspection_item=128&repair_change=R&variant_id=278",
+                  "host": [
+                    "{{be-host}}"
+                  ],
+                  "path": [
+                    "inspections",
+                    "cost"
+                  ],
+                  "query": [
+                    {
+                      "key": "company_code",
+                      "value": "30433",
+                      "description": "required"
+                    },
+                    {
+                      "key": "inspection_item",
+                      "value": "128",
+                      "description": "required get from API"
+                    },
+                    {
+                      "key": "repair_change",
+                      "value": "R",
+                      "description": "R: repair C: Change"
+                    },
+                    {
+                      "key": "variant_id",
+                      "value": "278",
+                      "description": "get from vehicle variant"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "ca4262f1-3c0d-4504-9509-8708880f8005",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "uploader",
+          "item": [
+            {
+              "name": "Store",
+              "_postman_id": "b992b1cd-efe7-4449-8b57-4008e9d33d78",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access-token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "files[]",
+                      "type": "file",
+                      "description": "- Required : Yes\n- Must array : Yes",
+                      "src": "/C:/Users/sidiq/Pictures/a.jpeg"
+                    },
+                    {
+                      "key": "files[]",
+                      "type": "file",
+                      "src": "/C:/Users/sidiq/Pictures/a.jpeg"
+                    },
+                    {
+                      "key": "company_code",
+                      "value": "30611",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {}
+                },
+                "url": "{{be-host}}/file/store"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "6a03c439-9e70-4e81-91ed-f511ec28dbc0",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "11a7b174-a7c2-49d0-9ecd-92b34acc9ed5"
+    }
+  ]
+}
