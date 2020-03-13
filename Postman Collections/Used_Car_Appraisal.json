@@ -149,7 +149,7 @@
                     "urlencoded": {}
                   }
                 },
-                "url": "{{be-host}}/auth-admin/user"
+                "url": "{{be-host}}/auth-admin/update"
               },
               "response": []
             }
