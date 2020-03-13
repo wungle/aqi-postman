@@ -2595,7 +2595,7 @@
                           "description": "required",
                           "key": "transaction_id",
                           "type": "text",
-                          "value": "1"
+                          "value": "2"
                         },
                         {
                           "key": "type",
@@ -2634,7 +2634,7 @@
                           "type": "text"
                         },
                         {
-                          "key": "flood_mark",
+                          "key": "flood_marks",
                           "value": "1",
                           "description": "1. true, 0. false",
                           "type": "text"
