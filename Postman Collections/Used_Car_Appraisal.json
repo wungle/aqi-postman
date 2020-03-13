@@ -104,6 +104,54 @@
                 "url": "{{be-host}}/auth-admin/user"
               },
               "response": []
+            },
+            {
+              "name": "user Copy",
+              "_postman_id": "f9a3365e-6078-482a-a8a0-217f6945e272",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "type": "text",
+                    "value": "Bearer {{admin-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "type": "text",
+                      "value": "Company C"
+                    },
+                    {
+                      "key": "database",
+                      "type": "text",
+                      "value": "companyc"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{be-host}}/auth-admin/user"
+              },
+              "response": []
             }
           ],
           "_postman_id": "30532dba-b2d3-47eb-9a6e-910490562436",
